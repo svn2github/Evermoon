@@ -123,7 +123,7 @@
 		static private function calculateDateTime($expression, $rtime, $next = true) {
 
 			// Initialize vars
- 
+
 			$calc_date	= true;
 
 			// Parse cron-expression (if neccessary)
@@ -153,12 +153,12 @@
 			} else {
 
 				// OK, things are getting a little bit more complicated...
- 
+
 				$nhour		= self::findValue($rtime[IDX_HOUR], $cron[IDX_HOUR], $next);
 
 				// Meh. Such a cruel world. Something has gone awry. Lets see HOW awry it went.
 
-				if (!$nhour) {
+				if ($nhour === false) {
 
 					// Ah, the hour-part went wrong. Thats easy. Wrong hour means that no
 					// matter what we do we'll end up at a different date. Thus we can use
@@ -218,10 +218,10 @@
 						}
 
 						// Set time
- 
+
 						$rtime[IDX_HOUR]	= $nhour;
 						$rtime[IDX_MINUTE]	= $nminute;
- 
+
 						$calc_date	= false;
 
 					}
